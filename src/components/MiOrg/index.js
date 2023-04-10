@@ -1,11 +1,10 @@
-import React from "react";
-import './MiOrg.css'
+import "./MiOrg.css";
 
-const MiOrg = () => {
+const MiOrg = (props) => {
   return (
     <section className="orgSection">
-      <h3 className="title">Mi Organización</h3>
-      <img src="/img/add.png" alt="add"/>
+      <h3 className="title">Mi Organización </h3>
+      <img src="/img/add.png" alt="add" onClick={props.onChange} />
     </section>
   );
 };
