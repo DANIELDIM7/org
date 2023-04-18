@@ -2,9 +2,17 @@ import './Equipo.css'
 import React from 'react'
 
 const Equipo = (props) => {
+  // Destructuración
+  const { colorPrimario, colorSecundario, titulo } = props.datos;
+
+  const obj ={
+    backgroundColor: colorSecundario
+  }
+
+  const estiloTitulo ={borderColor: colorPrimario};
   return (
-    <section className='equipo'>
-        <h3>{props.equipo}</h3>
+    <section className='equipo' style={obj}>
+        <h3 style={estiloTitulo}>{titulo}</h3>
         <div className='colaboradores'>
 
         </div>
@@ -13,4 +21,4 @@ const Equipo = (props) => {
   )
 }
 
-export default Equipo
+export default Equipo;
