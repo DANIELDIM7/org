@@ -53,7 +53,8 @@ function App() {
   return (
     <div>
       <Header />
-      {mostrarFormulario ? <Formulario /> : <></>}
+      {mostrarFormulario ? <Formulario equipos={equipos.map((equipo)=> equipo.titulo)} /> : <></>} 
+      {/* Para obtener a través de map solamente los datos del título */}
       <MiOrg onChange={cambiarMostrar}/>
       {equipos.map(
         (equipo) => (<Equipo datos={equipo} key={equipo.titulo} />) //Debe tener un key único para que no de un error en este caso le pusimos el título, el cuál es único para cada elemento del objeto (SIEMPRE QUE SE TRABAJE CON EL MÉTODO MAP SE DEBE DAR UN KEY QUE FUNCIONARÁ COMO REFERENCIA)
