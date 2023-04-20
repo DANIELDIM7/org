@@ -14,3 +14,9 @@
     display: inline-block; /* para que el borde solo se muestre en el espacio del bloque del h3  */
     padding-bottom: 8px;
 }
+
+.colaboradores{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
