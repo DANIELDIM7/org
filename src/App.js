@@ -4,10 +4,16 @@ import Formulario from "./components/Formulario/Formulario";
 import Header from "./components/Header/Header.js";
 import MiOrg from "./components/MiOrg";
 import Equipo from "./components/Equipo";
+import Footer from "./components/Footer";
 
 function App() {
   const [mostrarFormulario, setMostrar] = useState(false);
-  const [colaboradores, setColaboradores] = useState([]); // se debe manejar arreglos por lo que se van a trabajar listas
+  const [colaboradores, setColaboradores] = useState([{
+    equipo: "Front end",
+    foto: "https://github.com/DANIELDIM7.png",
+    nombre: "Daniel Cuéllar",
+    puesto: "Ingeniero Biomédico"
+  }]); // se debe manejar arreglos por lo que se van a trabajar listas
   const cambiarMostrar = () => {
     setMostrar(!mostrarFormulario);
   };
@@ -15,7 +21,7 @@ function App() {
   // Registrar
 
   const registrarColaborador = (colaborador) => {
-    console.log("Nuevo colaborador", colaborador);
+   
     // Spread operator
     setColaboradores([...colaboradores, colaborador]);
   };
@@ -78,10 +84,11 @@ function App() {
           <Equipo 
           datos={equipo} 
           key={equipo.titulo}
-          colaboradores = {colaboradores}
-          />
+          colaboradores = {colaboradores.filter((colaborador)=> colaborador.equipo === equipo.titulo)}
+          /> // con esto garantizamos que solo va a ingresar los colaboradores que pertenezcan a cada equipo
         ) //Debe tener un key único para que no de un error en este caso le pusimos el título, el cuál es único para cada elemento del objeto (SIEMPRE QUE SE TRABAJE CON EL MÉTODO MAP SE DEBE DAR UN KEY QUE FUNCIONARÁ COMO REFERENCIA)
       )}
+      <Footer/>
     </div>
   );
 }
