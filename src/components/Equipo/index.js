@@ -5,7 +5,7 @@ import React from "react";
 const Equipo = (props) => {
   // Destructuración
   const { colorPrimario, colorSecundario, titulo } = props.datos;
-  const { colaboradores } = props;
+  const { colaboradores,eliminarColaborador } = props;
   const obj = {
     backgroundColor: colorSecundario,
   };
@@ -20,6 +20,7 @@ const Equipo = (props) => {
             {colaboradores.map((colaborador, index) => (
               <Colaborador datos={colaborador} key={index}
               colorPrimario={colorPrimario}
+              eliminarColaborador={eliminarColaborador}
               />
             ))}
           </div>
