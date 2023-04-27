@@ -1,11 +1,12 @@
 import React from "react";
-import './Header.css'
+import "./Header.css";
 
 const Header = () => {
   return (
-   <img src= '/img/Header.png'></img>
-  )
+    <div className="header">
+      <img src="./img/header.png"></img>
+    </div>
+  );
 };
 
 export default Header;
-
