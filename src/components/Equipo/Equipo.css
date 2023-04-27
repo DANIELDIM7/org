@@ -5,6 +5,7 @@
     /* Para que al darle padding al elemento no se aumente el tamaño de la ´página por encima del 100% */
     text-align: center;
     font-size: 32px;
+    position: relative;
 }
 
 .equipo h3{
@@ -19,4 +20,10 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+.input-color{
+    position: absolute;
+    top: 20px;
+    right: 50px;
 }

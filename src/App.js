@@ -40,25 +40,7 @@ function App() {
       puesto: "Dev FullStack",
     },
   ]);
-  // se debe manejar arreglos por lo que se van a trabajar listas
-  const cambiarMostrar = () => {
-    setMostrar(!mostrarFormulario);
-  };
-
-  // Registrar
-
-  const registrarColaborador = (colaborador) => {
-    // Spread operator
-    setColaboradores([...colaboradores, colaborador]);
-  };
-
-  // Eliminar colaborador
-
-  const eliminarColaborador = () => {
-    console.log("Eliminar colaborador");
-  };
-  // Mi lista de equipos
-  const equipos = [
+  const [equipos, setEquipos] = useState([
     {
       titulo: "Programación",
       colorPrimario: "#57C278",
@@ -94,7 +76,37 @@ function App() {
       colorPrimario: "#FF8A29",
       colorSecundario: "#FFEEDF",
     },
-  ];
+  ]);
+  // se debe manejar arreglos por lo que se van a trabajar listas
+  const cambiarMostrar = () => {
+    setMostrar(!mostrarFormulario);
+  };
+
+  // Registrar
+
+  const registrarColaborador = (colaborador) => {
+    // Spread operator
+    setColaboradores([...colaboradores, colaborador]);
+  };
+
+  // Eliminar colaborador
+
+  const eliminarColaborador = () => {
+    console.log("Eliminar colaborador");
+  };
+
+  // Actualizar color de equipo
+
+  const actualizarColor = (color, titulo) => {
+    console.log("Actualizar: ", color, titulo);
+    const equiposActualizados = equipos.map((equipo) => {
+      if (equipo.titulo === titulo) {
+        equipo.colorPrimario = color; // verificamos si el equipo es igual al que le queremos modificar el color(este dato viene del componente equipos por medio de la función actualizar color), si corresponde entonces tomamos el dato del color y lo actualizamos del estado
+      }
+      return equipo;
+    });
+    setEquipos(equiposActualizados);
+  };
 
   return (
     <div>
@@ -110,18 +122,17 @@ function App() {
       {/* Para obtener a través de map solamente los datos del título */}
 
       <MiOrg onChange={cambiarMostrar} />
-      {equipos.map(
-        (equipo) => (
-          <Equipo
-            datos={equipo}
-            key={equipo.titulo}
-            colaboradores={colaboradores.filter(
-              (colaborador) => colaborador.equipo === equipo.titulo
-            )}
-            eliminarColaborador = {eliminarColaborador}
-          /> // con esto garantizamos que solo va a ingresar los colaboradores que pertenezcan a cada equipo
-        ) //Debe tener un key único para que no de un error en este caso le pusimos el título, el cuál es único para cada elemento del objeto (SIEMPRE QUE SE TRABAJE CON EL MÉTODO MAP SE DEBE DAR UN KEY QUE FUNCIONARÁ COMO REFERENCIA)
-      )}
+      {equipos.map((equipo) => (
+        <Equipo
+          datos={equipo}
+          key={equipo.titulo}
+          colaboradores={colaboradores.filter(
+            (colaborador) => colaborador.equipo === equipo.titulo
+          )} // con esto garantizamos que solo va a ingresar los colaboradores que pertenezcan a cada equipo
+          eliminarColaborador={eliminarColaborador}
+          actualizarColor={actualizarColor}
+        />
+      ))}
       <Footer />
     </div>
   );
