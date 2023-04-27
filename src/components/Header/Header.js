@@ -3,7 +3,7 @@ import './Header.css'
 
 const Header = () => {
   return (
-   <img src= './img/Header.png'></img>
+   <img src= '/img/Header.png'></img>
   )
 };
 
