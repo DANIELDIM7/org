@@ -120,7 +120,7 @@ function App() {
   // Actualizar color de equipo
 
   const actualizarColor = (color, id) => {
-    console.log("Actualizar: ", color, id);
+   
     const equiposActualizados = equipos.map((equipo) => {
       if (equipo.id === id) {
         equipo.colorPrimario = color; // verificamos si el equipo es igual al que le queremos modificar el color(este dato viene del componente equipos por medio de la función actualizar color), si corresponde entonces tomamos el dato del color y lo actualizamos del estado
